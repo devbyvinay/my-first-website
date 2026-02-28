@@ -1,0 +1,66 @@
+<div class="todo-container">
+  <h3>Tasks for: {{ currentDate || 'Select a date' }}</h3>
+
+  <div *ngIf="currentDate">
+    <mat-progress-bar mode="determinate" [value]="calculateProgress()"></mat-progress-bar>
+    <div class="header-actions">
+      <p>{{ calculateProgress() | number:'1.0-0' }}% Completed</p>
+      <!-- <button mat-button color="warn" (click)="clearAllCompleted()">Clear Completed</button> -->
+    </div>
+  </div>
+
+  <div class="search-box">
+    <input [(ngModel)]="searchTerm" placeholder="Search tasks..." />
+  </div>
+
+  <div class="add-task-container" *ngIf="currentDate">
+    <input [(ngModel)]="newTask" placeholder="Add task..." />
+    
+    <select [(ngModel)]="newCategory">
+      <option value="Personal">Personal</option>
+      <option value="Work">Work</option>
+      <option value="Urgent">Urgent</option>
+    </select>
+
+    <select [(ngModel)]="newPriority">
+      <option value="High">High</option>
+      <option value="Medium">Medium</option>
+      <option value="Low">Low</option>
+    </select>
+
+    <button (click)="addTask()">Add</button>
+  </div>
+
+  <div class="priority-section" *ngIf="filteredTasksByPriority('High').length > 0">
+    <h4>🔥 High Priority</h4>
+    <ul>
+      <li *ngFor="let todo of filteredTasksByPriority('High')">
+        <input type="checkbox" [checked]="todo.completed" (change)="updateTask(todo)">
+        <span [class.done]="todo.completed">{{ todo.task }}</span>
+        <button (click)="deleteTodo(todo.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="priority-section" *ngIf="filteredTasksByPriority('Medium').length > 0">
+    <h4>⚡ Medium Priority</h4>
+    <ul>
+      <li *ngFor="let todo of filteredTasksByPriority('Medium')">
+        <input type="checkbox" [checked]="todo.completed" (change)="updateTask(todo)">
+        <span [class.done]="todo.completed">{{ todo.task }}</span>
+        <button (click)="deleteTodo(todo.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="priority-section" *ngIf="filteredTasksByPriority('Low').length > 0">
+    <h4>🧊 Low Priority</h4>
+    <ul>
+      <li *ngFor="let todo of filteredTasksByPriority('Low')">
+        <input type="checkbox" [checked]="todo.completed" (change)="updateTask(todo)">
+        <span [class.done]="todo.completed">{{ todo.task }}</span>
+        <button (click)="deleteTodo(todo.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+</div>

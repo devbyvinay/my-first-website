@@ -1,0 +1,29 @@
+/* src/styles.css */
+:root {
+    --primary-color: #ff6b6b; /* A soft, modern coral */
+    --accent-color: #4ecdc4;   /* A soothing teal */
+    --bg-color: #f7f9fc;       /* A clean, light blue-grey background */
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+  }
+
+  :root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --surface-color: #ffffff;
+    --text-primary: #2d3436;
+  }
+  
+  /* Apply the gradient to buttons */
+  button {
+    background: var(--primary-gradient);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+  }

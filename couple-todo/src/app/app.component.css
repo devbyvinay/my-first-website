@@ -1,0 +1,49 @@
+/* Container to hold both cards side-by-side */
+.dashboard-wrapper {
+    display: flex;
+    gap: 24px;
+    padding: 40px;
+    background-color: #f7f9fc;
+    min-height: 100vh;
+  }
+  
+  /* Card Styling for that "layered" feel */
+  .calendar-card {
+    flex: 2;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height: 80vh; /* Takes up 80% of the screen height */
+  overflow: hidden;
+    position: relative;
+    z-index: 1; /* Ensures it stays above background elements */
+    /* ... existing styles ... */
+  }
+  
+  .todo-card {
+    flex: 1;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .calendar-card mat-card-content {
+    height: 100%;
+    display: block;
+  }
+  
+  /* Make the title look nice */
+  mat-card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  /* Force the calendar component to take the full space of the card */
+full-calendar {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
